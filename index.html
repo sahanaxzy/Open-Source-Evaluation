@@ -36,6 +36,26 @@
             <div class="last-update" id="lastUpdate">Last updated: Never</div>
         </header>
 
+            <!-- Temperature Chart -->
+            <div class="card chart-card">
+                <h2>📊 Temperature Forecast (24h)</h2>
+                <canvas id="temperatureChart"></canvas>
+            </div>
+
+            <!-- PM2.5 vs PM10 Comparison Chart -->
+            <div class="card chart-card">
+                <h2>🌬️ PM2.5 vs PM10 Comparison</h2>
+                <canvas id="pmComparisonChart"></canvas>
+            </div>
+
+            <!-- Insights Card -->
+            <div class="card insights-card">
+                <h2>💡 City Insights</h2>
+                <div class="insights-list" id="insightsList">
+                    <div class="insight-item">Loading insights...</div>
+                </div>
+            </div>
+        
 
     <script src="script.js"></script>
 </body>
