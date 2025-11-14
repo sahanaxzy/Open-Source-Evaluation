@@ -115,3 +115,145 @@ function showLoading() {
 function hideLoading() {
     document.getElementById('loadingOverlay').classList.remove('active');
 }
+
+
+function updateTemperatureChart(weatherData) {
+    const ctx = document.getElementById('temperatureChart').getContext('2d');
+    
+    // Use hourly data if available, otherwise generate sample data
+    const hourlyData = weatherData.hourly || Array.from({ length: 24 }, (_, i) => ({
+        time: `${i}:00`,
+        temp: weatherData.current.main.temp + Math.sin(i / 24 * Math.PI * 2) * 5
+    }));
+    
+    if (temperatureChart) {
+        temperatureChart.destroy();
+    }
+    
+    const colors = getChartColors();
+    
+    temperatureChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: hourlyData.map(h => h.time),
+            datasets: [{
+                label: 'Temperature (°C)',
+                data: hourlyData.map(h => Math.round(h.temp)),
+                borderColor: colors.primaryColor,
+                backgroundColor: colors.primaryBg,
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        color: colors.textColor
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: colors.textColor },
+                    grid: { color: colors.gridColor }
+                },
+                y: {
+                    beginAtZero: false,
+                    ticks: { color: colors.textColor },
+                    grid: { color: colors.gridColor },
+                    title: {
+                        display: true,
+                        text: 'Temperature (°C)',
+                        color: colors.textColor
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+
+function generateInsights(weatherData, airQualityData) {
+    const insights = [];
+    const current = weatherData.current;
+    const aqi = airQualityData.list[0].main.aqi;
+    const components = airQualityData.list[0].components;
+    
+    // AQI-based insights with specific messages
+    const aqiLabels = ['Good', 'Fair', 'Moderate', 'Poor', 'Very Poor'];
+    const aqiStatus = aqiLabels[aqi - 1] || 'Moderate';
+    
+    if (aqi === 1) {
+        insights.push(`✅ AQI is ${aqiStatus} — Air quality is excellent. Safe for all outdoor activities.`);
+    } else if (aqi === 2) {
+        insights.push(`✅ AQI is ${aqiStatus} — Air quality is acceptable. Most people can enjoy outdoor activities.`);
+    } else if (aqi === 3) {
+        insights.push(`⚠️ AQI is ${aqiStatus} — Sensitive groups should avoid outdoor activities. Children, elderly, and those with respiratory conditions should limit exposure.`);
+    } else if (aqi === 4) {
+        insights.push(`🚨 AQI is ${aqiStatus} — Everyone should avoid outdoor activities. Sensitive groups should stay indoors.`);
+    } else if (aqi === 5) {
+        insights.push(`🚨 AQI is ${aqiStatus} — Health alert: Everyone should avoid all outdoor activities. Stay indoors with windows closed.`);
+    }
+
+
+
+
+
+
+
+
+
+
+// PM2.5 vs PM10 comparison insight
+    if (pm10 > pm25 * 1.5) {
+        insights.push(`📊 PM10 significantly higher than PM2.5 — indicates larger particle pollution, possibly from dust or construction.`);
+    }
+    
+    if (parseFloat(components.no2) > 50) {
+        insights.push(`🚗 High NO₂ levels detected (${parseFloat(components.no2).toFixed(1)} µg/m³), likely from traffic. Consider using public transportation.`);
+    }
+    
+    if (parseFloat(components.o3) > 100) {
+        insights.push(`☀️ High O₃ (ozone) levels detected. Avoid outdoor exercise during peak hours.`);
+    }
+
+
+    // General insights
+    if (aqi <= 2 && current.main.temp > 15 && current.main.temp < 25 && windSpeed < 10) {
+        insights.push(`✨ Excellent conditions for outdoor activities! Perfect weather and air quality.`);
+    }
+    
+    // Update insights display
+    const insightsList = document.getElementById('insightsList');
+    if (insights.length === 0) {
+        insights.push('No significant alerts at this time. Conditions are normal.');
+    }
+    
+    insightsList.innerHTML = insights.map(insight => 
+        `<div class="insight-item">${insight}</div>`
+    ).join('');
+}
+
+
+function updateLastUpdateTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    document.getElementById('lastUpdate').textContent = `Last updated: ${timeString}`;
+}
+
+// Auto-refresh every 5 minutes
+setInterval(() => {
+    const selectedCity = document.getElementById('citySelect').value;
+    loadCityData(selectedCity);
+}, 5 * 60 * 1000);
+

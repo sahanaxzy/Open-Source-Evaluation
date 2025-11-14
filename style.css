@@ -200,6 +200,7 @@ header h1 {
     transition: color 0.3s ease, border-color 0.3s ease;
 }
 
+<<<<<<< HEAD
 .weather-card {
     grid-column: span 1;
 }
@@ -214,6 +215,8 @@ header h1 {
     text-align: center;
 }
 
+=======
+>>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
 .temperature {
     font-size: 4em;
     font-weight: bold;
@@ -222,6 +225,7 @@ header h1 {
     transition: color 0.3s ease;
 }
 
+<<<<<<< HEAD
 .weather-desc {
     font-size: 1.3em;
     color: var(--text-secondary);
@@ -259,6 +263,8 @@ header h1 {
 .air-quality-card {
     grid-column: span 1;
 }
+=======
+>>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
 .chart-card {
     grid-column: span 1;
     min-height: 350px;
@@ -267,3 +273,27 @@ header h1 {
 .chart-card canvas {
     max-height: 300px;
 }
+<<<<<<< HEAD
+=======
+
+.insights-card {
+    grid-column: span 1;
+}
+
+.insights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.insight-item {
+    padding: 15px;
+    background: linear-gradient(135deg, var(--insight-bg-start) 0%, var(--insight-bg-end) 100%);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+>>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
