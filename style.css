@@ -259,3 +259,11 @@ header h1 {
 .air-quality-card {
     grid-column: span 1;
 }
+.chart-card {
+    grid-column: span 1;
+    min-height: 350px;
+}
+
+.chart-card canvas {
+    max-height: 300px;
+}
