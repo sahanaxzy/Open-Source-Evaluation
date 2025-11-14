@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 const AIR_QUALITY_API_KEY = '91c1e041-ee9c-4331-9c30-9f91b2ddafea'; // Get from https://www.iqair.com/air-pollution-data-api
 
 
+=======
+// API Keys - In production, these should be stored securely
+// For demo purposes, using free tier APIs that may require registration
+const WEATHER_API_KEY = '9e03c5bcecceb88a641172a81d7d6929'; // Get from https://openweathermap.org/api
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
 // City coordinates mapping
 const cityCoordinates = {
     'London': { lat: 51.5074, lon: -0.1278, name: 'London' },

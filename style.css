@@ -200,6 +200,23 @@ header h1 {
     transition: color 0.3s ease, border-color 0.3s ease;
 }
 
+<<<<<<< HEAD
+.weather-card {
+    grid-column: span 1;
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.weather-main {
+    text-align: center;
+}
+
+=======
+>>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
 .temperature {
     font-size: 4em;
     font-weight: bold;
@@ -208,6 +225,7 @@ header h1 {
     transition: color 0.3s ease;
 }
 
+<<<<<<< HEAD
 
 .air-quality-card {
     grid-column: span 1;
@@ -235,27 +253,50 @@ header h1 {
 }
 
 .aqi-breakdown {
+=======
+<<<<<<< HEAD
+.weather-desc {
+    font-size: 1.3em;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+}
+
+.weather-details {
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
+<<<<<<< HEAD
 .pollutant {
+=======
+.detail-item {
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
     display: flex;
     justify-content: space-between;
     padding: 12px;
     background: var(--detail-bg);
     border-radius: 8px;
+<<<<<<< HEAD
     align-items: center;
     transition: background 0.3s ease;
 }
 
 .pollutant-name {
+=======
+    transition: background 0.3s ease;
+}
+
+.detail-item .label {
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
     color: var(--text-secondary);
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
+<<<<<<< HEAD
 .pollutant-value {
     color: var(--text-primary);
     font-weight: 600;
@@ -263,6 +304,19 @@ header h1 {
     transition: color 0.3s ease;
 }
 
+=======
+.detail-item .value {
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.air-quality-card {
+    grid-column: span 1;
+}
+=======
+>>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
 .chart-card {
     grid-column: span 1;
     min-height: 350px;
@@ -274,6 +328,8 @@ header h1 {
 .chart-card canvas {
     max-height: 300px;
 }
+<<<<<<< HEAD
+=======
 
 .insights-card {
     grid-column: span 1;
@@ -295,3 +351,4 @@ header h1 {
     color: var(--text-primary);
     transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+>>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
