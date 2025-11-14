@@ -207,9 +207,18 @@ function generateInsights(weatherData, airQualityData) {
 
 
 
-
-
-
+// PM2.5 vs PM10 comparison insight
+    if (pm10 > pm25 * 1.5) {
+        insights.push(`📊 PM10 significantly higher than PM2.5 — indicates larger particle pollution, possibly from dust or construction.`);
+    }
+    
+    if (parseFloat(components.no2) > 50) {
+        insights.push(`🚗 High NO₂ levels detected (${parseFloat(components.no2).toFixed(1)} µg/m³), likely from traffic. Consider using public transportation.`);
+    }
+    
+    if (parseFloat(components.o3) > 100) {
+        insights.push(`☀️ High O₃ (ozone) levels detected. Avoid outdoor exercise during peak hours.`);
+    }
 
 
     // General insights

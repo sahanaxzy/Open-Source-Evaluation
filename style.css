@@ -208,7 +208,14 @@ header h1 {
     transition: color 0.3s ease;
 }
 
+.chart-card {
+    grid-column: span 1;
+    min-height: 350px;
+}
 
+.chart-card canvas {
+    max-height: 300px;
+}
 
 .insights-card {
     grid-column: span 1;
