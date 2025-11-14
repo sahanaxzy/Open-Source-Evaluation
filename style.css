@@ -226,6 +226,35 @@ header h1 {
 }
 
 <<<<<<< HEAD
+
+.air-quality-card {
+    grid-column: span 1;
+}
+.aqi-display {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.aqi-value {
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.aqi-status {
+    font-size: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.aqi-breakdown {
+=======
+<<<<<<< HEAD
 .weather-desc {
     font-size: 1.3em;
     color: var(--text-secondary);
@@ -234,26 +263,48 @@ header h1 {
 }
 
 .weather-details {
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
+<<<<<<< HEAD
+.pollutant {
+=======
 .detail-item {
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
     display: flex;
     justify-content: space-between;
     padding: 12px;
     background: var(--detail-bg);
     border-radius: 8px;
+<<<<<<< HEAD
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.pollutant-name {
+=======
     transition: background 0.3s ease;
 }
 
 .detail-item .label {
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
     color: var(--text-secondary);
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
+<<<<<<< HEAD
+.pollutant-value {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+=======
 .detail-item .value {
     color: var(--text-primary);
     font-weight: 600;
@@ -265,10 +316,14 @@ header h1 {
 }
 =======
 >>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
 .chart-card {
     grid-column: span 1;
     min-height: 350px;
 }
+
+
+
 
 .chart-card canvas {
     max-height: 300px;
