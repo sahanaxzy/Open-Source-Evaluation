@@ -112,3 +112,64 @@ function showLoading() {
 function hideLoading() {
     document.getElementById('loadingOverlay').classList.remove('active');
 }
+
+
+function updateTemperatureChart(weatherData) {
+    const ctx = document.getElementById('temperatureChart').getContext('2d');
+    
+    // Use hourly data if available, otherwise generate sample data
+    const hourlyData = weatherData.hourly || Array.from({ length: 24 }, (_, i) => ({
+        time: `${i}:00`,
+        temp: weatherData.current.main.temp + Math.sin(i / 24 * Math.PI * 2) * 5
+    }));
+    
+    if (temperatureChart) {
+        temperatureChart.destroy();
+    }
+    
+    const colors = getChartColors();
+    
+    temperatureChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: hourlyData.map(h => h.time),
+            datasets: [{
+                label: 'Temperature (°C)',
+                data: hourlyData.map(h => Math.round(h.temp)),
+                borderColor: colors.primaryColor,
+                backgroundColor: colors.primaryBg,
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        color: colors.textColor
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: colors.textColor },
+                    grid: { color: colors.gridColor }
+                },
+                y: {
+                    beginAtZero: false,
+                    ticks: { color: colors.textColor },
+                    grid: { color: colors.gridColor },
+                    title: {
+                        display: true,
+                        text: 'Temperature (°C)',
+                        color: colors.textColor
+                    }
+                }
+            }
+        }
+    });
+}
