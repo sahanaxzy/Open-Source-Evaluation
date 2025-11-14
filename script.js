@@ -173,3 +173,75 @@ function updateTemperatureChart(weatherData) {
         }
     });
 }
+
+
+
+function generateInsights(weatherData, airQualityData) {
+    const insights = [];
+    const current = weatherData.current;
+    const aqi = airQualityData.list[0].main.aqi;
+    const components = airQualityData.list[0].components;
+    
+    // AQI-based insights with specific messages
+    const aqiLabels = ['Good', 'Fair', 'Moderate', 'Poor', 'Very Poor'];
+    const aqiStatus = aqiLabels[aqi - 1] || 'Moderate';
+    
+    if (aqi === 1) {
+        insights.push(`✅ AQI is ${aqiStatus} — Air quality is excellent. Safe for all outdoor activities.`);
+    } else if (aqi === 2) {
+        insights.push(`✅ AQI is ${aqiStatus} — Air quality is acceptable. Most people can enjoy outdoor activities.`);
+    } else if (aqi === 3) {
+        insights.push(`⚠️ AQI is ${aqiStatus} — Sensitive groups should avoid outdoor activities. Children, elderly, and those with respiratory conditions should limit exposure.`);
+    } else if (aqi === 4) {
+        insights.push(`🚨 AQI is ${aqiStatus} — Everyone should avoid outdoor activities. Sensitive groups should stay indoors.`);
+    } else if (aqi === 5) {
+        insights.push(`🚨 AQI is ${aqiStatus} — Health alert: Everyone should avoid all outdoor activities. Stay indoors with windows closed.`);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // General insights
+    if (aqi <= 2 && current.main.temp > 15 && current.main.temp < 25 && windSpeed < 10) {
+        insights.push(`✨ Excellent conditions for outdoor activities! Perfect weather and air quality.`);
+    }
+    
+    // Update insights display
+    const insightsList = document.getElementById('insightsList');
+    if (insights.length === 0) {
+        insights.push('No significant alerts at this time. Conditions are normal.');
+    }
+    
+    insightsList.innerHTML = insights.map(insight => 
+        `<div class="insight-item">${insight}</div>`
+    ).join('');
+}
+
+
+function updateLastUpdateTime() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    document.getElementById('lastUpdate').textContent = `Last updated: ${timeString}`;
+}
+
+// Auto-refresh every 5 minutes
+setInterval(() => {
+    const selectedCity = document.getElementById('citySelect').value;
+    loadCityData(selectedCity);
+}, 5 * 60 * 1000);
+
