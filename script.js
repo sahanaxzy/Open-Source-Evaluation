@@ -1,3 +1,6 @@
+// API Keys - In production, these should be stored securely
+// For demo purposes, using free tier APIs that may require registration
+const WEATHER_API_KEY = '9e03c5bcecceb88a641172a81d7d6929'; // Get from https://openweathermap.org/api
 // City coordinates mapping
 const cityCoordinates = {
     'London': { lat: 51.5074, lon: -0.1278, name: 'London' },

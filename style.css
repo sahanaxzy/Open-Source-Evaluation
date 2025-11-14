@@ -200,3 +200,62 @@ header h1 {
     transition: color 0.3s ease, border-color 0.3s ease;
 }
 
+.weather-card {
+    grid-column: span 1;
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.weather-main {
+    text-align: center;
+}
+
+.temperature {
+    font-size: 4em;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.weather-desc {
+    font-size: 1.3em;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: var(--detail-bg);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.detail-item .label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.detail-item .value {
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.air-quality-card {
+    grid-column: span 1;
+}
