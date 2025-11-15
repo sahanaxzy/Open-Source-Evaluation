@@ -1,7 +1,16 @@
+<<<<<<< HEAD
+const AIR_QUALITY_API_KEY = '91c1e041-ee9c-4331-9c30-9f91b2ddafea'; // Get from https://www.iqair.com/air-pollution-data-api
+
+
+=======
 // API Keys - In production, these should be stored securely
 // For demo purposes, using free tier APIs that may require registration
 const WEATHER_API_KEY = '9e03c5bcecceb88a641172a81d7d6929'; // Get from https://openweathermap.org/api
+<<<<<<< HEAD
 
+=======
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
+>>>>>>> 2b32b6cff26b31d4e36fd5d2236fa99d8989f1cf
 // City coordinates mapping
 const cityCoordinates = {
     'London': { lat: 51.5074, lon: -0.1278, name: 'London' },
@@ -371,6 +380,70 @@ function updateCharts(weatherData, airQualityData) {
     updateForecastChart(weatherData);
     updatePMComparisonChart(airQualityData);
 }
+
+// Fetch air quality data
+async function fetchAirQualityData(city) {
+    // Try OpenWeatherMap Air Pollution API first (free tier)
+    if (WEATHER_API_KEY !== 'YOUR_OPENWEATHER_API_KEY') {
+        try {
+            const response = await fetch(
+                `https://api.openweathermap.org/data/2.5/air_pollution?lat=${city.lat}&lon=${city.lon}&appid=${WEATHER_API_KEY}`
+            );
+            
+            if (response.ok) {
+                const data = await response.json();
+                return data;
+            }
+        } catch (error) {
+            console.log('OpenWeatherMap air quality API failed, trying IQAir...');
+        }
+    }
+    
+    // Fallback to IQAir API if available
+    if (AIR_QUALITY_API_KEY !== 'YOUR_AIRVISUAL_API_KEY') {
+        try {
+            // IQAir API endpoint - using nearest city data
+            const response = await fetch(
+                `https://api.airvisual.com/v2/nearest_city?lat=${city.lat}&lon=${city.lon}&key=${AIR_QUALITY_API_KEY}`
+            );
+            
+            if (response.ok) {
+                const data = await response.json();
+                // Transform IQAir response to match OpenWeatherMap format
+                if (data.data && data.data.current && data.data.current.pollution) {
+                    const pollution = data.data.current.pollution;
+                    const aqi = pollution.aqius; // IQAir uses US AQI (0-500)
+                    // Convert US AQI to 1-5 scale
+                    let aqiScale = 1;
+                    if (aqi <= 50) aqiScale = 1;
+                    else if (aqi <= 100) aqiScale = 2;
+                    else if (aqi <= 150) aqiScale = 3;
+                    else if (aqi <= 200) aqiScale = 4;
+                    else aqiScale = 5;
+                    
+                    return {
+                        list: [{
+                            main: { aqi: aqiScale },
+                            components: {
+                                pm2_5: pollution.ts ? pollution.ts : (pollution.aqius / 2).toFixed(1),
+                                pm10: pollution.ts ? (pollution.ts * 1.5).toFixed(1) : (pollution.aqius / 1.5).toFixed(1),
+                                o3: '0',
+                                no2: '0'
+                            }
+                        }]
+                    };
+                }
+            }
+        } catch (error) {
+            console.log('IQAir API failed, using mock data...');
+        }
+    }
+    
+    // Final fallback to mock data
+    return getMockAirQualityData(city);
+}
+
+
 
 function updateTemperatureChart(weatherData) {
     const ctx = document.getElementById('temperatureChart').getContext('2d');
