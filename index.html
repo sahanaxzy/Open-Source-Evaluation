@@ -36,7 +36,6 @@
             <div class="last-update" id="lastUpdate">Last updated: Never</div>
         </header>
 
-<<<<<<< HEAD
         <div class="dashboard-grid">
             <!-- Weather Card -->
             <div class="card weather-card">
@@ -66,24 +65,29 @@
                     </div>
                 </div>
             </div>
-        <!-- Weather Forecast Chart -->
-        <div class="card chart-card">
-            <h2>🌡️ Weather Forecast (5 Days)</h2>
-            <canvas id="forecastChart"></canvas>
-        </div>
-=======
             <!-- Temperature Chart -->
             <div class="card chart-card">
                 <h2>📊 Temperature Forecast (24h)</h2>
                 <canvas id="temperatureChart"></canvas>
             </div>
-
+            
             <!-- PM2.5 vs PM10 Comparison Chart -->
             <div class="card chart-card">
                 <h2>🌬️ PM2.5 vs PM10 Comparison</h2>
                 <canvas id="pmComparisonChart"></canvas>
             </div>
-
+            
+            
+            <!-- Temperature Chart -->
+            <div class="card chart-card">
+                <h2>📊 Temperature Forecast (24h)</h2>
+                <canvas id="temperatureChart"></canvas>
+            </div>
+            <!-- Weather Forecast Chart -->
+            <div class="card chart-card">
+                <h2>🌡️ Weather Forecast (5 Days)</h2>
+                <canvas id="forecastChart"></canvas>
+            </div>
             <!-- Insights Card -->
             <div class="card insights-card">
                 <h2>💡 City Insights</h2>
@@ -91,9 +95,11 @@
                     <div class="insight-item">Loading insights...</div>
                 </div>
             </div>
-        
-
->>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
+            <div class="loading-overlay" id="loadingOverlay">   
+                <div class="spinner"></div>
+                    <p>Fetching city data...</p>
+            </div>
+        </div>
     <script src="script.js"></script>
 </body>
 </html>

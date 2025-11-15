@@ -83,7 +83,6 @@ header h1 {
     text-align: center;
     flex: 1;
     transition: color 0.3s ease;
-    
 }
 
 .theme-toggle {
@@ -200,7 +199,6 @@ header h1 {
     transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-<<<<<<< HEAD
 .weather-card {
     grid-column: span 1;
 }
@@ -215,8 +213,6 @@ header h1 {
     text-align: center;
 }
 
-=======
->>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
 .temperature {
     font-size: 4em;
     font-weight: bold;
@@ -225,7 +221,6 @@ header h1 {
     transition: color 0.3s ease;
 }
 
-<<<<<<< HEAD
 .weather-desc {
     font-size: 1.3em;
     color: var(--text-secondary);
@@ -263,8 +258,57 @@ header h1 {
 .air-quality-card {
     grid-column: span 1;
 }
-=======
->>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
+
+.aqi-display {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.aqi-value {
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.aqi-status {
+    font-size: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.aqi-breakdown {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.pollutant {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: var(--detail-bg);
+    border-radius: 8px;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.pollutant-name {
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.pollutant-value {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
 .chart-card {
     grid-column: span 1;
     min-height: 350px;
@@ -273,8 +317,6 @@ header h1 {
 .chart-card canvas {
     max-height: 300px;
 }
-<<<<<<< HEAD
-=======
 
 .insights-card {
     grid-column: span 1;
@@ -296,4 +338,84 @@ header h1 {
     color: var(--text-primary);
     transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
->>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--loading-overlay);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s ease;
+}
+
+.loading-overlay.active {
+    display: flex;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+/* AQI Status Colors - These remain the same for both themes */
+.aqi-good { background: linear-gradient(135deg, #00e400 0%, #00b300 100%); }
+.aqi-moderate { background: linear-gradient(135deg, #ffff00 0%, #ffcc00 100%); }
+.aqi-unhealthy-sensitive { background: linear-gradient(135deg, #ff7e00 0%, #ff5500 100%); }
+.aqi-unhealthy { background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); }
+.aqi-very-unhealthy { background: linear-gradient(135deg, #8f3f97 0%, #6b2d7a 100%); }
+.aqi-hazardous { background: linear-gradient(135deg, #7e0023 0%, #5c0019 100%); }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .header-top {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .theme-toggle {
+        align-self: flex-end;
+    }
+    
+    .temperature {
+        font-size: 3em;
+    }
+    
+    .city-selector {
+        flex-direction: column;
+    }
+    
+    .weather-details,
+    .aqi-breakdown {
+        grid-template-columns: 1fr;
+    }
+}
