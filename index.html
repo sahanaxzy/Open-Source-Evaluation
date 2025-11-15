@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart City Data Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <h1>🏙️ Smart City Data Dashboard</h1>
+                <button id="themeToggle" class="theme-toggle" title="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+            <div class="city-selector">
+                <label for="citySelect">Select City:</label>
+                <select id="citySelect">
+                    <option value="London">London, UK</option>
+                    <option value="New York">New York, USA</option>
+                    <option value="Tokyo">Tokyo, Japan</option>
+                    <option value="Paris">Paris, France</option>
+                    <option value="Delhi">Delhi, India</option>
+                    <option value="Beijing">Beijing, China</option>
+                    <option value="Mumbai">Mumbai, India</option>
+                    <option value="Sydney">Sydney, Australia</option>
+                    <option value="Dubai">Dubai, UAE</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Bangalore">Bangalore, India</option>
+                </select>
+                <button id="refreshBtn" class="refresh-btn">🔄 Refresh Data</button>
+            </div>
+            <div class="last-update" id="lastUpdate">Last updated: Never</div>
+        </header>
+
+<<<<<<< HEAD
+        <!-- Air Quality Card -->
+            <div class="card air-quality-card">
+                <h2>💨 Air Quality Index</h2>
+                <div class="aqi-display">
+                    <div class="aqi-value" id="aqiValue">--</div>
+                    <div class="aqi-status" id="aqiStatus">--</div>
+                </div>
+                <div class="aqi-breakdown">
+                    <div class="pollutant">
+                        <span class="pollutant-name">PM2.5:</span>
+                        <span class="pollutant-value" id="pm25">--</span>
+                    </div>
+                    <div class="pollutant">
+                        <span class="pollutant-name">PM10:</span>
+                        <span class="pollutant-value" id="pm10">--</span>
+                    </div>
+                    <div class="pollutant">
+                        <span class="pollutant-name">O₃:</span>
+                        <span class="pollutant-value" id="o3">--</span>
+                    </div>
+                    <div class="pollutant">
+                        <span class="pollutant-name">NO₂:</span>
+                        <span class="pollutant-value" id="no2">--</span>
+                    </div>
+                </div>
+            </div>
+
+
+=======
+<<<<<<< HEAD
+        <div class="dashboard-grid">
+            <!-- Weather Card -->
+            <div class="card weather-card">
+                <h2>🌤️ Weather Conditions</h2>
+                <div class="weather-info">
+                    <div class="weather-main">
+                        <div class="temperature" id="temperature">--°C</div>
+                        <div class="weather-desc" id="weatherDesc">--</div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span class="label">Humidity:</span>
+                            <span class="value" id="humidity">--%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Wind Speed:</span>
+                            <span class="value" id="windSpeed">-- km/h</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Pressure:</span>
+                            <span class="value" id="pressure">-- hPa</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Visibility:</span>
+                            <span class="value" id="visibility">-- km</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Weather Forecast Chart -->
+        <div class="card chart-card">
+            <h2>🌡️ Weather Forecast (5 Days)</h2>
+            <canvas id="forecastChart"></canvas>
+        </div>
+=======
+>>>>>>> 36a3600857700c9e81f59f2e7a8a8e5bcb2defb0
+            <!-- Temperature Chart -->
+            <div class="card chart-card">
+                <h2>📊 Temperature Forecast (24h)</h2>
+                <canvas id="temperatureChart"></canvas>
+            </div>
+
+            <!-- PM2.5 vs PM10 Comparison Chart -->
+            <div class="card chart-card">
+                <h2>🌬️ PM2.5 vs PM10 Comparison</h2>
+                <canvas id="pmComparisonChart"></canvas>
+            </div>
+
+            <!-- Insights Card -->
+            <div class="card insights-card">
+                <h2>💡 City Insights</h2>
+                <div class="insights-list" id="insightsList">
+                    <div class="insight-item">Loading insights...</div>
+                </div>
+            </div>
+        
+
+>>>>>>> c8dd8cbaef57e17dab46e054a021108c99183282
+    <script src="script.js"></script>
+</body>
+</html>
